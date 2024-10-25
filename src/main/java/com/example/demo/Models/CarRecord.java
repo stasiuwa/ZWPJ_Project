@@ -15,9 +15,9 @@ public class CarRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public RecordType type;
-    public Date date;
-    public String description;
-    public long mileage;
-    public double price;
+    private RecordType type;
+    private Date date;
+    private String description;
+    private long mileage;
+    private double price;
 }

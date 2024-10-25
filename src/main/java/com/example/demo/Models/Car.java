@@ -12,15 +12,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public String brand;
-    public String model;
-    public String carYear;
-    public String edition;
+    private String brand;
+    private String model;
+    private String carYear;
+    private String edition;
 
     @OneToOne(mappedBy = "car", fetch = FetchType.LAZY)
-    public Engine engine;
+    private Engine engine;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
-    public List<CarRecord> records;
+    private List<CarRecord> records;
 
 }

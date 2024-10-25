@@ -1,13 +1,11 @@
-package com.example.demo.Models;
+package com.example.demo.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Entity
-public class Engine {
-    @Id
+@AllArgsConstructor
+public class EngineDTO {
     private String engineCode;
     private double capacity;
     private int horsePower;
