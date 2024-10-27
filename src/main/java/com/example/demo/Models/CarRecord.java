@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,6 +12,9 @@ public class CarRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @ManyToOne(fetch = FetchType.EAGER)
+//    @JsonBackReference
+    private Car car;
 
     private RecordType type;
     private Date date;
