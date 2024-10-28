@@ -4,9 +4,7 @@ import com.example.demo.Models.CarRecord;
 import com.example.demo.Services.CarRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,13 +13,15 @@ import java.util.List;
 public class CarRecordController {
     private final CarRecordService carRecordService;
 
-    @GetMapping("/records/all")
+    @GetMapping("/cars/records/all")
     public ResponseEntity<List<CarRecord>> getAllCarRecords(){
+        System.out.println("getAllCarRecords()");
         List<CarRecord> records = carRecordService.getAllCarRecords();
         return records.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(records);
     }
-    @GetMapping("/{carId}/records")
+    @GetMapping("/cars/{carId}/records")
     public ResponseEntity<List<CarRecord>> getCarRecords(@PathVariable long carId){
+        System.out.println("getCarRecords()");
         List<CarRecord> records = carRecordService.getCarRecordsByCarId(carId);
         return records.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(records);
     }
