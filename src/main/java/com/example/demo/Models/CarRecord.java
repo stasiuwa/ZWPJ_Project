@@ -13,12 +13,13 @@ public class CarRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "car_id", nullable = false)
 //    @JsonBackReference
     private Car car;
 
-    private RecordType type;
+    private String type;
     private Date date;
-    private String description;
+    private String details;
     private long mileage;
     private double price;
 }

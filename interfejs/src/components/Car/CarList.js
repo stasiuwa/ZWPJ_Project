@@ -27,18 +27,18 @@ const CarList = (props) => {
             </div>
             <ol  style={{color: 'white', background: '#262626'}}>
                 {currentCars.map((car) => (
-                    <li key={car._id}  style={{borderTop: 'gray solid 1px', paddingTop: '2vh', paddingBottom: '1vh'}}>
-                        <Link to={`/vGarage/myCars/${car._id}`} style={{ color: 'wheat', marginLeft: '1vw'}}>
+                    <li key={car.id}  style={{borderTop: 'gray solid 1px', paddingTop: '2vh', paddingBottom: '1vh'}}>
+                        <Link to={`/vGarage/myCars/${car.id}`} style={{ color: 'wheat', marginLeft: '1vw'}}>
                             {car.brand} {car.model} {car.car_year} {car.engine} {car.mileage}
                         </Link>
                         <ul style={{ listStyleType: 'decimal' }} >
-                            {car.posts.map((item, index) => (
-                                <li key={index} >
-                                    <Link to={`/vGarage/myCars/${car._id}/posts/${item._id}`}  style={{ color: 'white'}}>
-                                        {item.type} {item.date} {item.mileage} {item.details} {item.price}
-                                    </Link>
-                                </li>
-                            ))}
+                            {/*{car.posts.map((item, index) => (*/}
+                            {/*    <li key={index} >*/}
+                            {/*        <Link to={`/vGarage/myCars/${car.id}/posts/${item.id}`}  style={{ color: 'white'}}>*/}
+                            {/*            {item.type} {item.date} {item.mileage} {item.details} {item.price}*/}
+                            {/*        </Link>*/}
+                            {/*    </li>*/}
+                            {/*))}*/}
                         </ul>
                     </li>
                 ))}

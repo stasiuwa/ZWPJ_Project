@@ -14,6 +14,7 @@ public class CarService {
     private final CarRepository carRepository;
 
     public List<Car> getAllCars(){
+        System.out.println(carRepository.findAll());
         return carRepository.findAll();
     }
     public Optional<Car> getCar(long carId){
@@ -27,8 +28,8 @@ public class CarService {
             existingCar.setBrand(newCar.getBrand());
             existingCar.setModel(newCar.getModel());
             existingCar.setEngine(newCar.getEngine());
-            existingCar.setEdition(newCar.getEdition());
-            existingCar.setCarYear(newCar.getCarYear());
+            existingCar.setCar_year(newCar.getCar_year());
+            existingCar.setMileage(newCar.getMileage());
             return carRepository.save(existingCar);
         });
     }

@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String SECRET_KEY = "legendaoniemymmichalkuktorytakzulgumezeoslepl";
+    private static final String SECRET_KEY = "legendaoniemymmichalkuktorytakzulgumezeoslepl21374201337696969";
 
     /**
      * Generate jwt token with extra claims

@@ -1,6 +1,5 @@
 import React, {createContext, useContext, useState} from 'react';
 import {getAllCars} from "../api/services/Car";
-import {getUser} from "../api/services/User";
 import {getAllPosts, getPosts} from "../api/services/Post";
 
 const DataContext = createContext();
@@ -8,7 +7,6 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
     const [cars, setCars] = useState([]);
     const [posts, setPosts] = useState([]);
-    const [user, setUser] = useState({});
     const [error, setError] = useState(null);
 
     /**
@@ -42,23 +40,15 @@ export const DataProvider = ({ children }) => {
             try {
                 const response = await getAllCars();
                 setCars(response.data);
+                console.log(response.data);
             } catch (error) {
                 setError(error.response ? error.response.data : error.message);
             }
         };
-
-        const fetchUser = async () => {
-            try {
-                const response = await getUser();
-                setUser(response.data);
-            } catch (error) {
-                setError(error.response ? error.response.data : error.message);
-            }
-        }
-        fetchUser().then(fetchCars);
+        fetchCars().then();
     }
 
-    const data = {user, cars, posts, error, loadData, loadAllPosts, loadPosts};
+    const data = {cars, posts, error, loadData, loadAllPosts, loadPosts};
 
     return (
         <DataContext.Provider value={data}>

@@ -7,7 +7,7 @@ import merolIcon from "../assets/img/merolico.png";
 const MyGaragePageCarTABLE = () => {
     const data = useData();
     useEffect(() => {
-        data.loadData();
+        data.loadData().then();
     }, []);
     return (
         <div style={{

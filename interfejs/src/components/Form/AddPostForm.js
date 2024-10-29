@@ -123,7 +123,7 @@ const AddPostForm = () => {
                     >
                         <option value="">-- Wybierz samochód --</option>
                         {data.cars.map((car) => (
-                            <option key={car._id} value={car._id}>
+                            <option key={car.id} value={car.id}>
                                 {car.brand} {car.model} ({car.car_year})
                             </option>
                         ))}

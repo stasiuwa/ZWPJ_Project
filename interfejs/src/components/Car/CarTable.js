@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {deleteCar} from "../../api/services/Car";
 import {useData} from "../../contexts/DataContext";
@@ -50,7 +50,7 @@ const CarTable = (props) => {
                 </thead>
                 <tbody>
                 {currentCars.map((car) => (
-                    <tr key={car._id}>
+                    <tr key={car.id}>
                         <td>{car.brand}</td>
                         <td>{car.model}</td>
                         <td>{car.car_year}</td>
@@ -58,11 +58,14 @@ const CarTable = (props) => {
                         <td>{car.mileage}</td>
                         <td>
                             <button className={'btn btn-dark'} style={{color: 'blue'}}
-                                onClick={() => navigate(`/vGarage/myCars/${car._id}`)}>SZCZEGÓŁY</button>
+                                onClick={() => {
+                                    console.log(car.id);
+                                    navigate(`/vGarage/myCars/${car.id}`)
+                                }}>SZCZEGÓŁY</button>
                         </td>
                         <td>
                             <button className={'btn btn-dark'} style={{color: 'red'}}
-                                onClick={() => deleteButton(car._id)}>USUŃ</button>
+                                onClick={() => deleteButton(car.id)}>USUŃ</button>
                         </td>
                     </tr>
                 ))}

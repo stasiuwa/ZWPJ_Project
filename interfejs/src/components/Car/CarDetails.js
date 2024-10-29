@@ -18,8 +18,8 @@ const CarDetails = (props) => {
         navigate('/vGarage');
     }
     const editButton = () => {
-        console.log("ediButton:" , props.car._id);
-        navigate(`/vGarage/myCars/${props.car._id}/editCar`);
+        console.log("ediButton:" , props.car.id);
+        navigate(`/vGarage/myCars/${props.car.id}/editCar`);
     }
 
     return (

@@ -9,6 +9,3 @@ export const logoutUser = async () => {
 export const registerUser = async (userData) => {
     return await axios.post('/register', userData);
 }
-export const getUser = async () =>  {
-    return await axios.get('/profile');
-}

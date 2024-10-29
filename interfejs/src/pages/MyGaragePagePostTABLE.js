@@ -8,8 +8,8 @@ import merolIcon from "../assets/img/merolico.png";
 const MyGaragePagePostTABLE = () => {
     const data = useData();
     useEffect(() => {
-        data.loadPosts();
-    }, []);
+        data.loadAllPosts().then();
+    });
     return (
         <div>
             <div>
@@ -29,7 +29,7 @@ const MyGaragePagePostTABLE = () => {
                 </div>
                 <Navbar/>
                 <div>
-                    <PostTable data={data}/>
+                    <PostTable data={data.posts}/>
                 </div>
             </div>
 

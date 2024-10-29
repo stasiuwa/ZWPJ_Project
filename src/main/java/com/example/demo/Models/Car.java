@@ -1,8 +1,11 @@
 package com.example.demo.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,11 +17,9 @@ public class Car {
 
     private String brand;
     private String model;
-    private String carYear;
-    private String edition;
-
-    @OneToOne(mappedBy = "car", fetch = FetchType.LAZY)
-    private Engine engine;
+    private String car_year;
+    private String engine;
+    private long mileage;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
     private List<CarRecord> records;

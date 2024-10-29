@@ -10,8 +10,9 @@ const PostTable = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(15);
 
+    // TODO undefined
     const allPosts = props.data.cars.flatMap((car) =>
-        car.posts.map((post) => ({ ...post, carID: car._id }))
+        car.posts.map((post) => ({ ...post, carID: car.id }))
     );
     const indexOfFirstPost = (currentPage - 1) * perPage;
     const indexOfLastPost = indexOfFirstPost + perPage;
@@ -20,7 +21,7 @@ const PostTable = (props) => {
     const deleteButton = async (carID, postID) => {
         await deletePost(carID, postID);
         alert("Usunieto wpis!");
-        await data.loadData();
+        await data.loadPosts(carID);
     }
 
     return (
@@ -53,7 +54,7 @@ const PostTable = (props) => {
                 </thead>
                 <tbody>
                 {currentPosts.map((post) => (
-                    <tr key={post._id}>
+                    <tr key={post.id}>
                         <td>{post.type}</td>
                         <td>{post.date}</td>
                         <td>{post.mileage}</td>
@@ -61,11 +62,11 @@ const PostTable = (props) => {
                         <td>{post.price}</td>
                         <td>
                             <button className={'btn btn-dark'} style={{color: 'blue'}}
-                                    onClick={() => navigate(`/vGarage/myCars/${post.carID}/posts/${post._id}`)}>SZCZEGÓŁY</button>
+                                    onClick={() => navigate(`/vGarage/myCars/${post.carID}/posts/${post.id}`)}>SZCZEGÓŁY</button>
                         </td>
                         <td>
                             <button className={'btn btn-dark'} style={{color: 'red'}}
-                                    onClick={() => deleteButton(post.carID, post._id)}>USUŃ</button>
+                                    onClick={() => deleteButton(post.carID, post.id)}>USUŃ</button>
                         </td>
                     </tr>
                 ))}

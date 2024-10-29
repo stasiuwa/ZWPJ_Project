@@ -7,7 +7,7 @@ import merolIcon from "../assets/img/merolico.png";
 const MyGaragePageLIST = () => {
     const data = useData();
     useEffect(() => {
-        data.loadData();
+        data.loadData().then();
     }, []);
     return (
         <div>

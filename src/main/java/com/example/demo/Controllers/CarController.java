@@ -25,21 +25,23 @@ public class CarController {
     @PostMapping()
     public Car createCar(@RequestBody Car car){
         System.out.println("createCar()");
+        System.out.println(car);
         return carService.addCar(car);
     }
-    @GetMapping("/{carId}")
-    public ResponseEntity<Car> getCar(@PathVariable long carId){
-        Optional<Car> car = carService.getCar(carId);
+    @GetMapping("/{carID}")
+    public ResponseEntity<Car> getCar(@PathVariable long carID){
+        System.out.println("carID: " + carID);
+        Optional<Car> car = carService.getCar(carID);
         return car.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    @PutMapping("/{carId}")
-    public ResponseEntity<Car> updateCar(@PathVariable long carId, @RequestBody Car updateCar){
-        Optional<Car> car = carService.updateCar(carId, updateCar);
+    @PutMapping("/{carID}")
+    public ResponseEntity<Car> updateCar(@PathVariable long carID, @RequestBody Car updateCar){
+        Optional<Car> car = carService.updateCar(carID, updateCar);
         return car.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    @DeleteMapping("/{carId}")
-    public ResponseEntity<Car> deleteCar(@PathVariable long carId){
-        if (carService.deleteCar(carId)){
+    @DeleteMapping("/{carID}")
+    public ResponseEntity<Car> deleteCar(@PathVariable long carID){
+        if (carService.deleteCar(carID)){
             return ResponseEntity.noContent().build();
         } else return ResponseEntity.notFound().build();
     }

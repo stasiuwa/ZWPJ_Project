@@ -4,11 +4,12 @@ import {Link, useParams} from "react-router-dom";
 import {getCar} from "../api/services/Car";
 import CarDetails from "../components/Car/CarDetails";
 import merolIcon from "../assets/img/merolico.png";
+import {getPosts} from "../api/services/Post";
 
 const CarDetailsPage = () => {
     const { carID } = useParams();
     const [car, setCar] = useState({
-        _id: carID,
+        id: carID,
         brand: '',
         model: '',
         car_year: '',
@@ -26,7 +27,15 @@ const CarDetailsPage = () => {
                 console.error("Error fetching car data:", error);
             }
         };
-        fetchCar();
+        const fetchPosts = async () => {
+            try {
+                const response = await getPosts(carID);
+                car.posts = response.data;
+            } catch (error) {
+                console.error("Error fetching car data:", error);
+            }
+        }
+        fetchCar().then(fetchPosts);
     }, [carID]);
 
     if (!car) return <h1>Ładowanie...</h1>;
@@ -57,13 +66,14 @@ const CarDetailsPage = () => {
                 }}>
                     <h4>WPISY</h4>
                     <ul style={{listStyleType: 'decimal'}}>
-                        {car.posts.map((item, index) => (
-                            <li key={index}>
-                                <Link to={`/vGarage/myCars/${carID}/posts/${item._id}`} style={{ color:'white'}}>
-                                    {item.type} {item.date}
-                                </Link>
-                            </li>
-                        ))}
+                        {/*TODO poprawic bo nie ma postow w ogole kurwa*/}
+                        {/*{car.posts.map((item, index) => (*/}
+                        {/*    <li key={index}>*/}
+                        {/*        <Link to={`/vGarage/myCars/${carID}/posts/${item.id}`} style={{ color:'white'}}>*/}
+                        {/*            {item.type} {item.date}*/}
+                        {/*        </Link>*/}
+                        {/*    </li>*/}
+                        {/*))}*/}
                     </ul>
                 </div>
             </div>
